@@ -14,10 +14,10 @@ namespace Player
         /// Get user input.
         /// </summary>
         /// <returns>Movement user input values</returns>
-        public Vector2 UserInput()
+        public static Vector2 UserInput()
         {
-            var x = Input.GetAxis(horizontalAxis);
-            var y = Input.GetAxis(verticalAxis);
+            var x = Input.GetAxis("Horizontal");
+            var y = Input.GetAxis("Vertical");
             
             return new Vector2(x, y);
         }
@@ -26,27 +26,35 @@ namespace Player
         /// Get if the user hold sprint key
         /// </summary>
         /// <returns></returns>
-        public bool Sprint()
+        public static bool Sprint()
         {
-            return Input.GetKey(sprintKey) ? true : false;
+            return Input.GetKey(KeyCode.LeftShift) ? true : false;
         }
 
         /// <summary>
         /// Get if the user press jump key
         /// </summary>
         /// <returns></returns>
-        public bool Jump()
+        public static bool Jump()
         {
-            return Input.GetKeyDown(jumpKey) ? true : false;
+            return Input.GetKeyDown(KeyCode.Space) ? true : false;
+        }
+
+        public static Vector2 UserMouseInput()
+        {
+            float x = Input.GetAxis("Mouse X");
+            float y = Input.GetAxis("Mouse Y");
+            
+            return new Vector2(x, y);
         }
         
         #endregion
         #region Private
 
-        [SerializeField] private string horizontalAxis;
-        [SerializeField] private string verticalAxis;
-        [SerializeField] private KeyCode sprintKey;
-        [SerializeField] private KeyCode jumpKey;
+        //[SerializeField] private string horizontalAxis;
+        //[SerializeField] private string verticalAxis;
+        //[SerializeField] private KeyCode sprintKey;
+        //[SerializeField] private KeyCode jumpKey;
 
         #endregion
     }

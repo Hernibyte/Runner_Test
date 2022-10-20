@@ -30,10 +30,10 @@ namespace Player
 
         private void Movement()
         {
-            Vector3 newPos = transform.right * playerController.UserInput().x +
-                             transform.forward * playerController.UserInput().y;
+            Vector3 newPos = transform.right * PlayerController.UserInput().x +
+                             transform.forward * PlayerController.UserInput().y;
 
-            if (playerController.Sprint())
+            if (PlayerController.Sprint())
             {
                 _characterController.Move( newPos * sprintForce * Time.deltaTime);
                 return;
@@ -55,11 +55,10 @@ namespace Player
         {
             if (!_isGrounded) return;
             
-            if (playerController.Jump())
+            if (PlayerController.Jump())
                 _velocity.y = Mathf.Sqrt((jumpForce * -2f * fakeGravity));
         }
         
-        [SerializeField] private PlayerController playerController;
         [SerializeField] private float fakeGravity;
         [SerializeField] private float movementForce;
         [SerializeField] private float sprintForce;
